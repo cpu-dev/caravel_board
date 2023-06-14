@@ -1,4 +1,4 @@
-export PATH=$PATH:/bin:/usr/local/bin/:../../venv/bin:/usr/bin/:.
+export PATH=$PATH:/bin:/usr/local/bin/:../../venv/bin:/usr/bin/:/home/yuki/.local/bin/:.
 
 # --- automatically set ---
 #DEV=/dev/cu.usbmodem33203
@@ -37,6 +37,9 @@ version: check_device
 # alternate -- mpremote connect ${DEV} exec "import machine; machine.reset()"
 run: check_device check_part
 	mpremote connect ${DEV} exec "import io_config; io_config.run('$(PART)', $(VOLTAGE))"
+
+repl:
+	mpremote connect ${DEV} repl
 
 run_analog: check_device check_part
 ifdef VOLTAGE
